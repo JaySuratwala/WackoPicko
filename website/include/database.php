@@ -1,18 +1,18 @@
 <?php
 class DB
 {
-   public $conn;
-   
-   function __construct($server, $user_name, $pass, $db)
-   {
-      $this->conn = mysqli($server, $user_name, $pass);
-      mysql_select_db($db, $this->conn);
-      mysql_set_charset('utf8');
-   }
+  public $conn;
+  
+  function __construct($server, $user_name, $pass, $db)
+  {
+   $this->conn = mysqli($server, $user_name, $pass);
+   mysqli_select_db($this->conn, $db);
+   mysqli_set_charset($this->conn, 'utf8');
+  }
 
-   function __destruct()
-   {
-      mysql_close($this->conn);
-   }
+  function __destruct()
+  {
+   mysqli_close($this->conn);
+  }
 }
 ?>
